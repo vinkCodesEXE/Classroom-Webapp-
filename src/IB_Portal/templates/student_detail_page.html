@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="profile-details">
+      <h1>{{ student.name }}</h1>
+      <br>
+      <p><i class="far fa-user"></i> Username: {{ student.username }}</p>
+      <p><i class="fal fa-user-tag"></i> Roll No.: {{ student.roll_no }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ student.email }}</p>
+      <a href="{% url 'student_update' pk=user.pk %}"> <p class="edit-button">Edit Profile</p> </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

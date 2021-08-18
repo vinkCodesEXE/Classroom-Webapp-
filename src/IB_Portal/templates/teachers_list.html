@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="student-list">
+<div class="container">
+  <form method='GET' action="{% url 'teachers_list' %}">
+    <p>Serch Teacher: <input type='search' name='q' placeholder='Search'></p>
+  </form>
+  <div class="row">
+  {% for teacher in teachers_list %}
+  <div class="col-6 col-md-4">
+  <div class="student-box">
+    <div class="content">
+      <h3>{{ teacher.name }}</h3>
+      <p><i class="far fa-user"></i> Username: {{ teacher.username }}</p>
+      <p><i class="fas fa-books"></i> Subject Name: {{ teacher.subject_name }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ teacher.email }}</p>
+      <a href="{% url 'write_message' pk=teacher.pk %}"><p class="add-button">Message</p> </a>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+</div>
+
+{% endblock %}

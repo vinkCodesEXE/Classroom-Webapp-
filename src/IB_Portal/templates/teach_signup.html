@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="login-page">
+  <div class="student-signup-form">
+    {% if registered %}
+    <h1>Thank you for registering.</h1>
+    {% else %}
+    <h1>Sign Up as a teacher.</h1>
+    
+
+    <form method="post">
+      {% csrf_token %}
+
+      {{ Teacher_Form.non_field_errors }}
+
+      <p><label >{{ Teacher_Form.name.label_tag }}</label>{{ Teacher_Form.name }}</p>
+      <p> <label for="">{{ Teacher_Form.subject_name.label_tag }}</label>  {{ Teacher_Form.subject_name }}</p>
+      <p> <label for="">{{ Teacher_Form.email.label_tag }}</label>{{ Teacher_Form.email }}</p>
+
+
+      {{ loggerform.non_field_errors }}
+
+      <p> <label for="">{{ logger_Form.username.label_tag }}</label>{{ logger_Form.username }}</p>
+      <p> {{ logger_Form.username.help_text }}</p>
+      <p> <label for="">{{ logger_Form.password1.label_tag }}</label>{{ logger_Form.password1 }}</p>
+      <p> {{ logger_Form.password1.help_text }} </p>
+      <p> <label for="">{{ logger_Form.password2.label_tag }}</label>{{ logger_Form.password2 }}</p>
+      <p> {{ logger_Form.password2.help_text }} </p>
+      <input type="submit" name="" value="Sign Up">
+    </form>
+    <a href="{% url 'login' %}">Already have an account.</a>
+    {% endif %}
+  </div>
+</div>
+
+
+
+{% endblock %}

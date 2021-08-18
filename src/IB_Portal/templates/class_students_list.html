@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="student-list">
+<div class="container">
+  {% if class_students_list.count == 0 %}
+    <h1>No students in the class.</h1>
+    {% else %}
+
+  <form method='GET' action="{% url 'class_student_list' %}">
+    <p>Search Student: <input type='search' name='q' placeholder='Search'></p>
+  </form>
+  <div class="row">
+  {% for student in class_students_list %}
+  <div class="col-6 col-md-4">
+  <div class="student-box">
+    <div class="content">
+      <h3>{{ student.name }}</h3>
+      <p><i class="far fa-user"></i> Username: {{ student.username }}</p>
+      <p><i class="fal fa-user-tag"></i> Roll No.: {{ student.roll_no }}</p>
+      <p><i class="far fa-envelope-open-text"></i> Email ID: {{ student.email }}</p>
+      <a href="{% url 'student_marks_list' pk=student.pk %}"><p class="add-button">View Marks Profile</p></a>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endif %}
+</div>
+
+{% endblock %}

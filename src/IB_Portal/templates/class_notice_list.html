@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+
+  {% if student.class_notice.count == 0 %}
+  <h2>No Notices Yet</h2>
+  {% else %}
+  {% for notice in student.class_notice.all %}
+  <div class="notice">
+  <div class="row">
+    <div class="col-md-11">
+      <div class="notice-details">
+        <div class="row">
+        <div class="col-md-3">
+          <h5>By: {{ notice.teacher.name }}</h5>
+        </div>
+        <div class="col-md-3">
+          <h5>Subject: {{ notice.teacher.subject_name }}</h5>
+        </div>
+        <div class="col-md-3">
+          <h5>November 19,2020, 12:13 pm</h5>
+        </div>
+        </div>
+        <hr>
+        <h2>{{ notice.message_html|safe }}</h2>
+        </div>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+
+{% endblock %}

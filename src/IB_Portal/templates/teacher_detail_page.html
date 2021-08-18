@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="profile">
+    <div class="profile-details">
+      <a href="{% url 'teacher_update' pk=user.pk %}"><p class="edit-button">Edit profile</p></a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
